@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ruang Kata — temukan dan tulis cerita.">
+  <title>Ruang Kata — Temukan Cerita, Temukan Dunia</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <nav class="navbar container" aria-label="Navigasi utama">
+    <a class="brand" href="#beranda">Ruang Kata</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#beranda">Beranda</a><a href="#jelajahi">Jelajahi</a><a href="#studio">Tulis Novel</a>
+      <button class="nav-login" id="loginButton" type="button">Masuk</button>
+    </div>
+  </nav>
+</header>
+<main>
+<section class="hero container" id="beranda">
+  <div class="hero-copy"><p class="eyebrow">SELAMAT DATANG DI RUANG KATA</p>
+    <h1>Temukan Cerita,<br><span>Temukan Dunia.</span></h1>
+    <p class="hero-description">Jelajahi novel dan cerita bersambung, atau ciptakan kisahmu sendiri.</p>
+    <a class="button" href="#jelajahi">Mulai Membaca</a>
+    <a class="button outline-button" href="#studio">Mulai Menulis</a>
+  </div>
+  <div class="hero-art" role="img" aria-label="Ilustrasi buku terbuka"><div class="sun"></div>
+    <div class="book book-back"></div><div class="book book-left"><span>RUANG<br>KATA</span></div>
+    <div class="book book-right"><span>Setiap cerita<br>punya dunia.</span></div><span class="spark spark-one">✦</span><span class="spark spark-two">✧</span>
+  </div>
+</section>
+
+<section class="section container" id="pilihan">
+  <div class="section-heading"><div><p class="eyebrow">PILIHAN EDITOR</p><h2>Novel Pilihan</h2></div><a class="text-link" href="#jelajahi">Lihat semua →</a></div>
+  <div class="novel-grid" id="featuredNovels"></div>
+</section>
+
+<section class="browse-section" id="jelajahi">
+ <div class="container">
+  <div class="section-heading"><div><p class="eyebrow">TEMUKAN FAVORITMU</p><h2>Jelajahi Cerita</h2><p class="section-description">Cari novel berdasarkan judul, penulis, atau genre.</p></div></div>
+  <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Cari judul atau penulis..." aria-label="Cari novel"></label>
+  <div class="filters" id="categoryFilters" aria-label="Filter kategori">
+    <button class="filter active" data-category="Semua">Semua</button><button class="filter" data-category="Romansa">Romansa</button>
+    <button class="filter" data-category="Fantasi">Fantasi</button><button class="filter" data-category="Misteri">Misteri</button>
+    <button class="filter" data-category="Drama">Drama</button><button class="filter" data-category="Petualangan">Petualangan</button>
+  </div>
+  <div class="novel-grid" id="allNovels"></div><p class="empty-state" id="emptyState" hidden>Belum ada cerita yang cocok.</p>
+ </div>
+</section>
+
+<section class="writer-section" id="studio">
+ <div class="container">
+  <div class="section-heading"><div><p class="eyebrow">RUANG KREATOR</p><h2>Tulis Novelmu</h2>
+   <p class="section-description">Buat cerita sendiri, simpan draf di perangkatmu, lalu terbitkan di daftar Novelku.</p></div></div>
+  <div class="writer-layout">
+   <form class="writer-form" id="novelForm">
+    <h3>Informasi Novel</h3>
+    <label for="novelTitle">Judul novel</label><input id="novelTitle" type="text" maxlength="90" placeholder="Contoh: Senja Terakhir" required>
+    <div class="form-row">
+     <div><label for="novelGenre">Genre</label><select id="novelGenre"><option>Romansa</option><option>Fantasi</option><option>Misteri</option><option>Drama</option><option>Petualangan</option><option>Fiksi ilmiah</option><option>Horor</option></select></div>
+     <div><label for="penName">Nama pena</label><input id="penName" type="text" maxlength="60" placeholder="Nama penulis" required></div>
+    </div>
+    <label for="novelSynopsis">Sinopsis</label><textarea id="novelSynopsis" rows="4" maxlength="700" placeholder="Ceritakan gambaran singkat novelmu..." required></textarea>
+    <label for="chapterTitle">Judul bab pertama</label><input id="chapterTitle" type="text" maxlength="100" placeholder="Contoh: Pertemuan di Kala Hujan" required>
+    <label for="chapterText">Isi cerita</label><textarea id="chapterText" rows="10" placeholder="Mulai tulis ceritamu di sini..." required></textarea>
+    <div class="editor-footer"><span id="wordCount">0 kata</span><span id="saveStatus" aria-live="polite">Draf belum disimpan.</span></div>
+    <div class="writer-actions"><button class="button secondary-button" type="button" id="saveDraftButton">Simpan Draf</button><button class="button" type="submit">Terbitkan Novel</button></div>
+    <p class="writer-note">Prototipe ini menyimpan data di browser/perangkat yang sedang digunakan. Untuk berbagi novel ke semua pengguna, perlu backend dan database.</p>
+   </form>
+   <aside class="writer-side">
+    <div class="writer-tip"><span class="tip-icon">✍</span><h3>Mulai dari satu halaman</h3><p>Tulis ide, bangun karakter, lalu kembangkan ceritamu sedikit demi sedikit.</p></div>
+    <div class="my-novels-card"><div class="my-novels-heading"><h3>Novelku</h3><span id="myNovelCount">0 karya</span></div>
+     <div id="myNovelsList" class="my-novels-list"><p class="empty-state">Belum ada novel. Mulai menulis karya pertamamu!</p></div>
+    </div>
+   </aside>
+  </div>
+ </div>
+</section>
+
+<section class="section container"><div class="quote-card"><span class="quote-mark">“</span><blockquote>Di antara halaman-halaman buku, selalu ada dunia yang menunggu untuk ditemukan.</blockquote><p>Ruang Kata — tempat cerita menemukan pembacanya.</p></div></section>
+</main>
+<footer class="footer"><div class="container footer-inner"><a class="brand" href="#beranda">Ruang Kata</a><p>Temukan cerita. Temukan duniamu.</p><small>© <span id="year"></span> Ruang Kata</small></div></footer>
+
+<dialog class="novel-dialog" id="novelDialog"><button class="dialog-close" id="dialogClose" aria-label="Tutup">×</button><div id="dialogContent"></div></dialog>
+<dialog class="novel-dialog" id="readerDialog"><button class="dialog-close" id="readerClose" aria-label="Tutup">×</button><div id="readerContent"></div></dialog>
+<dialog class="login-dialog" id="loginDialog"><button class="dialog-close" id="loginClose" aria-label="Tutup">×</button><p class="eyebrow">SELAMAT DATANG</p><h2>Masuk ke Ruang Kata</h2><p class="section-description">Form ini masih demo dan belum memakai sistem akun.</p><form id="loginForm"><label for="email">Email</label><input id="email" type="email" placeholder="nama@email.com" required><label for="password">Kata sandi</label><input id="password" type="password" placeholder="Kata sandi" required minlength="4"><button class="button form-button" type="submit">Masuk</button><p class="form-message" id="loginMessage" aria-live="polite"></p></form></dialog>
+</body>
+</html>
